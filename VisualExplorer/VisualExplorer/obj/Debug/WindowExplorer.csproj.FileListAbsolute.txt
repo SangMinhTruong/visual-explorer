@@ -1,0 +1,22 @@
+D:\Study\Kì 3\Lập trình trực quan\TH\BTTH4\BTTH4\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\Study\Kì 3\Lập trình trực quan\TH\BTTH4\BTTH4\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\Study\Kì 3\Lập trình trực quan\TH\BTTH4\BTTH4\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\Study\Kì 3\Lập trình trực quan\TH\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowExplorer.csprojAssemblyReference.cache
+D:\Study\Kì 3\Lập trình trực quan\TH\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmMain.resources
+D:\Study\Kì 3\Lập trình trực quan\TH\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\Study\Kì 3\Lập trình trực quan\TH\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowExplorer.csproj.GenerateResource.cache
+D:\Study\Kì 3\Lập trình trực quan\TH\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowExplorer.csproj.CoreCompileInputs.cache
+D:\Study\Kì 3\Lập trình trực quan\TH\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\Study\Kì 3\Lập trình trực quan\TH\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\Study\Kì 3\Lập trình trực quan\TH\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.aboutForm.resources
+C:\Users\Sang\Downloads\Compressed\BTTH4\BTTH4\BTTH4\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Sang\Downloads\Compressed\BTTH4\BTTH4\BTTH4\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Sang\Downloads\Compressed\BTTH4\BTTH4\BTTH4\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Sang\Downloads\Compressed\BTTH4\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowExplorer.csprojAssemblyReference.cache
+C:\Users\Sang\Downloads\Compressed\BTTH4\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FrmMain.resources
+C:\Users\Sang\Downloads\Compressed\BTTH4\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.aboutForm.resources
+C:\Users\Sang\Downloads\Compressed\BTTH4\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Sang\Downloads\Compressed\BTTH4\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowExplorer.csproj.GenerateResource.cache
+C:\Users\Sang\Downloads\Compressed\BTTH4\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowExplorer.csproj.CoreCompileInputs.cache
+C:\Users\Sang\Downloads\Compressed\BTTH4\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Sang\Downloads\Compressed\BTTH4\BTTH4\BTTH4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
