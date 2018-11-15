@@ -1,1 +1,1 @@
-# visual-explorer
+# Visual Explorer
