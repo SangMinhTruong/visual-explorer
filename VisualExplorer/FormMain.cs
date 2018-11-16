@@ -30,6 +30,7 @@ namespace VisualExplorer
         private string currentPath;
         private Stack backPaths = new Stack(); // Stack lưu path cũ
         private Stack forwardPaths = new Stack(); // Stack lưu path trước khi trở về path cũ
+        private string selected;
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e) // Event select treeView
         {
             TreeNode currentNode = e.Node; // Node hiện tại
@@ -507,6 +508,59 @@ namespace VisualExplorer
             form.ShowDialog();
         }
 
+        private void tsbtnCmd_Click(object sender, EventArgs e)
+        {
+            var processStartInfo = new ProcessStartInfo();
+
+            processStartInfo.WorkingDirectory = currentPath;
+
+            processStartInfo.FileName = "cmd.exe";
+
+            //processStartInfo.Arguments = "/C regsvr32 rsclientprint.dll";
+
+            Process proc = Process.Start(processStartInfo);
+        }
+
+        private void listView_MouseClick(object sender, MouseEventArgs e)
+        {
+            bool match = false;
+
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                foreach (ListViewItem item in listView.Items)
+                {
+                    if (item.Bounds.Contains(new Point(e.X, e.Y)))
+                    {
+                        match = true;
+                        break;
+                    }
+                }
+                if (match)
+                {
+                    rightClickMenu.Show(listView, new Point(e.X, e.Y));
+                    return;
+                }
+            }
+        }
+        private void rightClickMenu_Open_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = listView.FocusedItem;
+            bool isOK = clsTreeListView.ClickItem(this.listView, item);
+            if (isOK) // Kiểm trả Click thành công 
+            {
+                if (item.SubItems[1].Text == "Folder")
+                    tscmbPath.Text = item.SubItems[4].Text + "\\";  // Hiện thị path của folder
+                backPaths.Push(currentPath); // Push path cũ vào stack
+                if (backPaths.Count > 1)
+                    tsbtnBack.Enabled = true;
+                forwardPaths = new Stack(); // Khởi tạo lại stack forward
+                tsbtnForward.Enabled = false;
+                currentPath = tscmbPath.Text; // Lưu path hiện tại
+                if (listView.Items.Count > 0)
+                    statusLabel.Text = listView.Items.Count.ToString() + " đối tượng"; // Statusbar
+            }
+
+        }
         private void menuFile_Click(object sender, EventArgs e)
         {
 
@@ -526,6 +580,5 @@ namespace VisualExplorer
         {
 
         }
-
     }
 }
