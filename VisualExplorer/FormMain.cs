@@ -580,5 +580,10 @@ namespace VisualExplorer
         {
 
         }
+
+        private void rightClickMenu_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

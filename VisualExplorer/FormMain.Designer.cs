@@ -79,13 +79,13 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.rightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -614,23 +614,10 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
-            // rightClickMenu
-            // 
-            this.rightClickMenu.AutoSize = false;
-            this.rightClickMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.renameToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.cutToolStripMenuItem,
-            this.pasteToolStripMenuItem,
-            this.removeToolStripMenuItem});
-            this.rightClickMenu.Name = "rightClickMenu";
-            this.rightClickMenu.Size = new System.Drawing.Size(150, 158);
-            // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.rightClickMenu_Open_Click);
             // 
@@ -667,6 +654,20 @@
             this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.menuDelete_Click);
+            // 
+            // rightClickMenu
+            // 
+            this.rightClickMenu.AutoSize = false;
+            this.rightClickMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.renameToolStripMenuItem,
+            this.copyToolStripMenuItem,
+            this.cutToolStripMenuItem,
+            this.pasteToolStripMenuItem,
+            this.removeToolStripMenuItem});
+            this.rightClickMenu.Name = "rightClickMenu";
+            this.rightClickMenu.Size = new System.Drawing.Size(140, 140);
+            this.rightClickMenu.Opening += new System.ComponentModel.CancelEventHandler(this.rightClickMenu_Opening);
             // 
             // FrmMain
             // 
@@ -755,13 +756,13 @@
         private System.Windows.Forms.ToolStripButton tsbtnBack;
         private System.Windows.Forms.ToolStripButton tsbtnForward;
         private System.Windows.Forms.ToolStripButton tsbtnCmd;
-        private System.Windows.Forms.ContextMenuStrip rightClickMenu;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip rightClickMenu;
     }
 }
 
