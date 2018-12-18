@@ -643,6 +643,20 @@ namespace VisualExplorer
                 return;
             }
             string[] urlElements = url.Split('/');
+            if (urlElements[urlElements.Length - 1].Split('.')[urlElements[urlElements.Length - 1].Split('.').Length - 1] == "git")
+            {
+                var processStartInfo = new ProcessStartInfo();
+
+                processStartInfo.WorkingDirectory = currentPath;
+
+                processStartInfo.FileName = "cmd.exe";
+
+                processStartInfo.Arguments = "/c git clone "+ url ;
+
+                Process proc = Process.Start(processStartInfo);
+                clsTreeListView.FocusItem(listView, currentPath, urlElements[urlElements.Length - 1].Split('.')[0]);
+                return;
+            }
             using (WebClient wc = new WebClient())
             {
                 wc.DownloadProgressChanged += wc_DownloadProgressChanged;
