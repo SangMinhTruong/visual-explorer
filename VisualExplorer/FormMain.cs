@@ -551,7 +551,7 @@ namespace VisualExplorer
         private void listView_MouseClick(object sender, MouseEventArgs e)
         {
             bool match = false;
-
+            
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 foreach (ListViewItem item in listView.Items)
@@ -562,11 +562,15 @@ namespace VisualExplorer
                         break;
                     }
                 }
+          
+                    
                 if (match)
                 {
                     rightClickMenu.Show(listView, new Point(e.X, e.Y));
                     return;
                 }
+                rightClickSpace.Show(listView, new Point(e.X, e.Y));
+                
             }
         }
         private void rightClickMenu_Open_Click(object sender, EventArgs e)
@@ -712,6 +716,68 @@ namespace VisualExplorer
             Calendar.Calendar scheduler = new Calendar.Calendar();
             scheduler.Show();
             scheduler.GoButtonClicked += new Calendar.Calendar.GoButtonClickHandler(GoToDirectory);
+        }
+
+        private void listView_MouseClick(object sender, EventArgs e)
+        {
+            //MessageBox.Show(e.ToString());
+            //rightClickMenu.Show(listView, new Point(en.X, en.Y));
+        }
+
+        private void handle_Right_Click(object sender, MouseEventArgs en)
+        {
+            rightClickMenu.Show(listView, new Point(en.X, en.Y));
+        }
+
+        private void tsDropView_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            menuSmall.PerformClick();
+        }
+
+        private void largeIconsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            menuLarge.PerformClick();
+        }
+
+        private void listToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            menuList.PerformClick();
+        }
+
+        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            menuDetails.PerformClick();
+        }
+
+        private void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            menuPaste.PerformClick();
+        }
+
+        private void newFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newFolder();
+           
+        }
+        private void newFolder()
+        {
+            int i = 0;
+            string newFolder;
+            while (Directory.Exists(currentPath + "New folder (" + i.ToString() + ")"))
+                i++;
+            if (i == 0 && !Directory.Exists(currentPath + "New folder "))
+                newFolder = "New folder";
+            else
+                newFolder = "New folder (" + i.ToString() + ")";
+            Directory.CreateDirectory(currentPath + newFolder);
+            clsTreeListView.FocusItem(listView, currentPath, newFolder);
+            return;
+            
         }
         // ---------------
     }
