@@ -13,12 +13,14 @@ using System.Diagnostics;
 
 namespace VisualExplorer
 {
+    delegate void Update_Status_Delegate(int progress);
     public partial class FrmMain : Form
     {
         private ClsTreeListView clsTreeListView = new ClsTreeListView();
         public FrmMain()
         {
             InitializeComponent();
+            label1.Text = " ";
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -35,17 +37,17 @@ namespace VisualExplorer
         {
             TreeNode currentNode = e.Node; // Node hiện tại
             bool isOK = false;
-            
+
             if (currentNode.Text != "My Computer")
             {
-                isOK=clsTreeListView.ShowFolderTree(this.treeView, this.listView, currentNode); // Hiện thị thư mục trong node thành công
+                isOK = clsTreeListView.ShowFolderTree(this.treeView, this.listView, currentNode); // Hiện thị thư mục trong node thành công
                 tscmbPath.Text = clsTreeListView.GetFullPath(currentNode.FullPath); // Gán path của thư mục hiện tại vào textPath
             }
             else
             {
-                
+
             }
-            if(isOK)
+            if (isOK)
             {
                 pathNode = tscmbPath.Text;
                 backPaths.Push(currentPath); // Push path cũ vào stack
@@ -62,8 +64,8 @@ namespace VisualExplorer
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e) // Event double click của listView 
         {
             ListViewItem item = listView.FocusedItem;
-            bool isOK=clsTreeListView.ClickItem(this.listView, item); 
-            if(isOK) // Kiểm trả Click thành công 
+            bool isOK = clsTreeListView.ClickItem(this.listView, item);
+            if (isOK) // Kiểm trả Click thành công 
             {
                 if (item.SubItems[1].Text == "Folder")
                     tscmbPath.Text = item.SubItems[4].Text + "\\";  // Hiện thị path của folder
@@ -80,10 +82,10 @@ namespace VisualExplorer
 
         private void listView_KeyPress(object sender, KeyPressEventArgs e) // Event ấn Enter của listView
         {
-            if(e.KeyChar==13)
+            if (e.KeyChar == 13)
             {
                 bool isOK = clsTreeListView.ShowContent(this.listView, tscmbPath.Text); // Kiểm tra thư mục hiện tại có tồn tại không
-                if(isOK)
+                if (isOK)
                 {
                     backPaths.Push(currentPath); // Push path cũ vào stack
                     if (backPaths.Count > 1)
@@ -102,11 +104,11 @@ namespace VisualExplorer
         {
             try
             {
-                if(tscmbPath.Text != "")
+                if (tscmbPath.Text != "")
                 {
                     bool isOK;
                     FileInfo f = new FileInfo(tscmbPath.Text.Trim());
-                    if(f.Exists) // Nếu là file thì chạy file
+                    if (f.Exists) // Nếu là file thì chạy file
                     {
                         Process.Start(tscmbPath.Text.Trim());
                         DirectoryInfo parent = f.Directory;
@@ -117,7 +119,7 @@ namespace VisualExplorer
                     {
                         isOK = clsTreeListView.ShowContent(listView, tscmbPath.Text);// Kiểm tra có hiện được thư mục không
                     }
-                    if(isOK)
+                    if (isOK)
                     {
                         backPaths.Push(currentPath); // Push path cũ vào stack
                         if (backPaths.Count > 1)
@@ -130,7 +132,7 @@ namespace VisualExplorer
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -138,8 +140,8 @@ namespace VisualExplorer
 
         private void tscmbPath_KeyPress(object sender, KeyPressEventArgs e) // Event ấn Enter tương tư như Event ấn nút Go nhưng k mở file
         {
-            if(e.KeyChar==13)
-            { 
+            if (e.KeyChar == 13)
+            {
                 clsTreeListView.ShowContent(this.listView, tscmbPath.Text);
                 backPaths.Push(currentPath); // Push path cũ vào stack
                 if (backPaths.Count > 1)
@@ -158,7 +160,7 @@ namespace VisualExplorer
         }
         private bool isCopying = false; // Var kiểm tra đang copy
         private bool isFolder = false; // Var kiểm tra là folder
-        private bool isListView = false; 
+        private bool isListView = false;
         private ListViewItem itemPaste;
         //private TreeNode TitemPaste;
         private string pathFolder;
@@ -210,7 +212,7 @@ namespace VisualExplorer
                 {
                     isFolder = true;
                     pathFolder = itemPaste.SubItems[4].Text + "\\";
-                }                
+                }
                 else
                 {
                     isFolder = false;
@@ -256,10 +258,12 @@ namespace VisualExplorer
                     pathDest = pathString;
                 }
                 //copy
-                if(isCopying)
+                if (isCopying)
                 {
                     if (isFolder)
-                    Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(pathSource, pathDest, true); // Copy thư mục
+
+                        Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(pathSource, pathDest, true);
+                    // Copy thư mục
                     //{
                     //    if (Directory.Exists(pathSource))
                     //    {
@@ -278,18 +282,35 @@ namespace VisualExplorer
                     //    }
                     //}
                     else
-                        Microsoft.VisualBasic.FileIO.FileSystem.CopyFile(pathSource, pathDest, true); // Copy file
-                        //File.Copy(pathSource, pathDest, true);
+                    {
+                        FileInfo _source = new FileInfo(pathSource);
+                        FileInfo _destination = new FileInfo(pathDest);
+                        if (_destination.Exists) _destination.Delete();
+                        Update_Status_Delegate actionUpdate = new Update_Status_Delegate(Update_Status);
+                        CopyUtils.CopyTo(_source, _destination, actionUpdate);
+                    }
+                    // Copy file
+                    //File.Copy(pathSource, pathDest, true);
+                    label1.Text = "Done";
                     isCopying = false;
                 }
                 //cut
-                if(isCutting)
+                if (isCutting)
                 {
-                    if(isFolder)
+                    if (isFolder)
                         Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(pathSource, pathDest, true); // Move thư mục
                     else
-                        Microsoft.VisualBasic.FileIO.FileSystem.MoveFile(pathSource, pathDest, true); // Move file
+                    //    Microsoft.VisualBasic.FileIO.FileSystem.MoveFile(pathSource, pathDest, true); // Move file
+                    {
+                        FileInfo _source = new FileInfo(pathSource);
+                        FileInfo _destination = new FileInfo(pathDest);
+                        if (_destination.Exists) _destination.Delete(); 
+                        Update_Status_Delegate actionUpdate = new Update_Status_Delegate(Update_Status);
+                        CopyUtils.CopyTo(_source, _destination, actionUpdate);
+                    }
+                    label1.Text = "Done";
                     isCutting = false;
+
                 }
                 string strPath;
                 if (!isFolder)
@@ -301,12 +322,16 @@ namespace VisualExplorer
                 if (listView.Items.Count > 0)
                     statusLabel.Text = listView.Items.Count.ToString() + " đối tượng";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
+        private void Update_Status(int progress)
+        {
+            label1.Text = progress.ToString() + "% complete";
 
+        }
         private void tsbtnCopy_Click(object sender, EventArgs e)
         {
             menuCopy.PerformClick();
@@ -326,7 +351,7 @@ namespace VisualExplorer
         {
             try
             {
-                if(listView.Focused)
+                if (listView.Focused)
                 {
                     ListViewItem item = new ListViewItem();
                     item = listView.FocusedItem;
@@ -335,7 +360,7 @@ namespace VisualExplorer
                         statusLabel.Text = listView.Items.Count.ToString() + " đối tượng";
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -351,26 +376,26 @@ namespace VisualExplorer
         {
             isRenaming = true;
             try { listView.SelectedItems[0].BeginEdit(); }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //MessageBox.Show(ex.Message);
                 MessageBox.Show("Không thể đổi tên từ cây thư mục", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-           
+
         }
 
         private void listView_AfterLabelEdit(object sender, LabelEditEventArgs e) // Rename item
         {
             try
             {
-                if(isRenaming)
+                if (isRenaming)
                 {
                     ListViewItem item = listView.FocusedItem;
                     string path = item.SubItems[4].Text;
                     if (e.Label == null)
                         return;
                     FileInfo fi = new FileInfo(path);
-                    if(fi.Exists)
+                    if (fi.Exists)
                     {
                         Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(path, e.Label);
                         string pathFolder = clsTreeListView.GetPathDir(path);
@@ -386,7 +411,7 @@ namespace VisualExplorer
                     isRenaming = false;
                 }
             }
-            catch(IOException)
+            catch (IOException)
             {
                 MessageBox.Show("File hoặc thư mục đã tồn tại");
             }
@@ -406,10 +431,10 @@ namespace VisualExplorer
             try
             {
                 string path = currentPath;
-                if(path!="")
+                if (path != "")
                 {
                     if (path.LastIndexOf(":\\") != path.Length - 2 && path.LastIndexOf("\\") == path.Length - 1)// Kiểm tra path thư mục con
-                        path = path.Remove(path.Length - 1); 
+                        path = path.Remove(path.Length - 1);
                     string parentDir = clsTreeListView.GetPathDir(path); // Lấy path thư mục cha
                     tscmbPath.Text = parentDir;
                     backPaths.Push(currentPath); // Push path cũ vào stack
@@ -423,7 +448,7 @@ namespace VisualExplorer
                         statusLabel.Text = listView.Items.Count.ToString() + " đối tượng";
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -582,6 +607,16 @@ namespace VisualExplorer
         }
 
         private void rightClickMenu_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
