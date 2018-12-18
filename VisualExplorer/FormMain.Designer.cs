@@ -72,6 +72,8 @@
             this.tsmenuDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbtnRename = new System.Windows.Forms.ToolStripButton();
             this.tsbtnCmd = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.tsPath = new System.Windows.Forms.ToolStrip();
             this.tslbPath = new System.Windows.Forms.ToolStripLabel();
             this.tscmbPath = new System.Windows.Forms.ToolStripTextBox();
@@ -87,8 +89,7 @@
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -119,8 +120,8 @@
             this.splitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainer.Panel2.Controls.Add(this.listView);
             this.splitContainer.Panel2MinSize = 40;
-            this.splitContainer.Size = new System.Drawing.Size(910, 440);
-            this.splitContainer.SplitterDistance = 294;
+            this.splitContainer.Size = new System.Drawing.Size(926, 440);
+            this.splitContainer.SplitterDistance = 299;
             this.splitContainer.SplitterWidth = 5;
             this.splitContainer.TabIndex = 0;
             // 
@@ -134,7 +135,7 @@
             this.treeView.Margin = new System.Windows.Forms.Padding(2);
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 0;
-            this.treeView.Size = new System.Drawing.Size(294, 440);
+            this.treeView.Size = new System.Drawing.Size(299, 440);
             this.treeView.TabIndex = 0;
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
@@ -142,13 +143,13 @@
             // 
             this.imageLstTreeView.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageLstTreeView.ImageStream")));
             this.imageLstTreeView.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageLstTreeView.Images.SetKeyName(0, "tải xuống.jpg");
+            this.imageLstTreeView.Images.SetKeyName(0, "computer.png");
             this.imageLstTreeView.Images.SetKeyName(1, "images.jpg");
-            this.imageLstTreeView.Images.SetKeyName(2, "Hard drive.png");
-            this.imageLstTreeView.Images.SetKeyName(3, "Disk-icon.png");
+            this.imageLstTreeView.Images.SetKeyName(2, "hard-disk.png");
+            this.imageLstTreeView.Images.SetKeyName(3, "dvd.png");
             this.imageLstTreeView.Images.SetKeyName(4, "Network-Drive-icon.png");
-            this.imageLstTreeView.Images.SetKeyName(5, "tải xuống (1).jpg");
-            this.imageLstTreeView.Images.SetKeyName(6, "Folder Open.png");
+            this.imageLstTreeView.Images.SetKeyName(5, "folder-close.png");
+            this.imageLstTreeView.Images.SetKeyName(6, "folder-open.png");
             // 
             // listView
             // 
@@ -164,7 +165,7 @@
             this.listView.Location = new System.Drawing.Point(0, 0);
             this.listView.Margin = new System.Windows.Forms.Padding(2);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(611, 440);
+            this.listView.Size = new System.Drawing.Size(622, 440);
             this.listView.SmallImageList = this.imgListSmall;
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
@@ -256,7 +257,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(910, 24);
+            this.menuStrip.Size = new System.Drawing.Size(926, 24);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip";
             this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
@@ -400,12 +401,13 @@
             this.tsDropView,
             this.tsbtnRename,
             this.tsbtnCmd,
+            this.toolStripButton2,
             this.toolStripButton1,
             this.toolStripTextBox1});
             this.toolBar.Location = new System.Drawing.Point(0, 24);
             this.toolBar.Name = "toolBar";
             this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.toolBar.Size = new System.Drawing.Size(910, 32);
+            this.toolBar.Size = new System.Drawing.Size(926, 32);
             this.toolBar.TabIndex = 2;
             this.toolBar.Text = "toolStrip1";
             this.toolBar.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolBar_ItemClicked);
@@ -556,6 +558,23 @@
             this.tsbtnCmd.Text = "Cmd";
             this.tsbtnCmd.Click += new System.EventHandler(this.tsbtnCmd_Click);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::VisualExplorer.Properties.Resources.download;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(24, 29);
+            this.toolStripButton1.Text = "ButtonDownload";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 32);
+            this.toolStripTextBox1.ToolTipText = "Enter URL";
+            this.toolStripTextBox1.Click += new System.EventHandler(this.toolStripTextBox1_Click);
+            // 
             // tsPath
             // 
             this.tsPath.BackColor = System.Drawing.SystemColors.Control;
@@ -566,7 +585,7 @@
             this.tsbtnGo});
             this.tsPath.Location = new System.Drawing.Point(0, 56);
             this.tsPath.Name = "tsPath";
-            this.tsPath.Size = new System.Drawing.Size(910, 32);
+            this.tsPath.Size = new System.Drawing.Size(926, 32);
             this.tsPath.TabIndex = 3;
             this.tsPath.Text = "toolStrip1";
             // 
@@ -605,7 +624,7 @@
             this.statusStrip.Location = new System.Drawing.Point(0, 530);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.statusStrip.Size = new System.Drawing.Size(910, 22);
+            this.statusStrip.Size = new System.Drawing.Size(926, 22);
             this.statusStrip.TabIndex = 4;
             this.statusStrip.Text = "statusStrip";
             // 
@@ -677,36 +696,29 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(808, 535);
+            this.label1.Location = new System.Drawing.Point(866, 535);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "label1";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // toolStripButton1
+            // toolStripButton2
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::VisualExplorer.Properties.Resources.download;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(24, 29);
-            this.toolStripButton1.Text = "ButtonDownload";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripTextBox1
-            // 
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 32);
-            this.toolStripTextBox1.ToolTipText = "Enter URL";
-            this.toolStripTextBox1.Click += new System.EventHandler(this.toolStripTextBox1_Click);
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(83, 29);
+            this.toolStripButton2.Text = "Scheduler";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(910, 552);
+            this.ClientSize = new System.Drawing.Size(926, 552);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.tsPath);
@@ -800,6 +812,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }
 

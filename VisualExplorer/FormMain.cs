@@ -690,7 +690,29 @@ namespace VisualExplorer
                         resultURI.Scheme == Uri.UriSchemeHttps
                 : false;
         }
-
-        
+        // Scheduler
+        private void GoToDirectory(object sender, Calendar.GoButtonEventArgs e)
+        {
+            bool isOK = clsTreeListView.ShowContent(this.listView, e.Path); // Kiểm tra thư mục hiện tại có tồn tại không
+            if (isOK) // Kiểm trả Click thành công 
+            {
+                tscmbPath.Text = e.Path;  // Hiện thị path của folder
+                backPaths.Push(currentPath); // Push path cũ vào stack
+                if (backPaths.Count > 1)
+                    tsbtnBack.Enabled = true;
+                forwardPaths = new Stack(); // Khởi tạo lại stack forward
+                tsbtnForward.Enabled = false;
+                currentPath = e.Path; // Lưu path hiện tại
+                if (listView.Items.Count > 0)
+                    statusLabel.Text = listView.Items.Count.ToString() + " đối tượng"; // Statusbar
+            }
+        }
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Calendar.Calendar scheduler = new Calendar.Calendar();
+            scheduler.Show();
+            scheduler.GoButtonClicked += new Calendar.Calendar.GoButtonClickHandler(GoToDirectory);
+        }
+        // ---------------
     }
 }

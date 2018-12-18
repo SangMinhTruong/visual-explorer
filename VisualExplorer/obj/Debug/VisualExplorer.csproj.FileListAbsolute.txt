@@ -20,3 +20,18 @@ C:\Users\BAO HO\Desktop\github\visual-explorer\VisualExplorer\obj\Debug\VisualEx
 C:\Users\BAO HO\Desktop\github\visual-explorer\VisualExplorer\obj\Debug\VisualExplorer.csproj.CoreCompileInputs.cache
 C:\Users\BAO HO\Desktop\github\visual-explorer\VisualExplorer\obj\Debug\VisualExplorer.exe
 C:\Users\BAO HO\Desktop\github\visual-explorer\VisualExplorer\obj\Debug\VisualExplorer.pdb
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\bin\Debug\VisualExplorer.exe.config
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\bin\Debug\VisualExplorer.exe
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\bin\Debug\VisualExplorer.pdb
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\obj\Debug\VisualExplorer.csprojAssemblyReference.cache
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\obj\Debug\VisualExplorer.FrmMain.resources
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\obj\Debug\VisualExplorer.aboutForm.resources
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\obj\Debug\VisualExplorer.Properties.Resources.resources
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\obj\Debug\VisualExplorer.csproj.GenerateResource.cache
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\obj\Debug\VisualExplorer.csproj.CoreCompileInputs.cache
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\obj\Debug\VisualExplorer.exe
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\obj\Debug\VisualExplorer.pdb
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\bin\Debug\Calendar.exe
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\bin\Debug\Calendar.pdb
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\bin\Debug\Calendar.exe.config
+C:\Users\Sang\Documents\Homework\VisualExplorer\VisualExplorer\obj\Debug\VisualExplorer.csproj.CopyComplete
