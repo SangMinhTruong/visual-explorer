@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Net;
+using System.Text.RegularExpressions;
 
 namespace VisualExplorer
 {
@@ -29,7 +31,7 @@ namespace VisualExplorer
             tscmbPath.Width = Width - 120; // Set Width của textPath
         }
         private string pathNode;
-        private string currentPath;
+        private string currentPath ;
         private Stack backPaths = new Stack(); // Stack lưu path cũ
         private Stack forwardPaths = new Stack(); // Stack lưu path trước khi trở về path cũ
         private string selected;
@@ -304,7 +306,7 @@ namespace VisualExplorer
                     {
                         FileInfo _source = new FileInfo(pathSource);
                         FileInfo _destination = new FileInfo(pathDest);
-                        if (_destination.Exists) _destination.Delete(); 
+                        if (_destination.Exists) _destination.Delete();
                         Update_Status_Delegate actionUpdate = new Update_Status_Delegate(Update_Status);
                         CopyUtils.CopyTo(_source, _destination, actionUpdate);
                     }
@@ -620,5 +622,61 @@ namespace VisualExplorer
         {
 
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+            if (currentPath == null)
+            {
+                MessageBox.Show("Select a folder");
+                return;
+            }
+            if (toolStripTextBox1.Text.Trim().Length == 0)
+                MessageBox.Show("Enter an URL");
+            string url = toolStripTextBox1.Text.Trim();
+            if (!Regex.IsMatch(url, @"^https?:\/\/", RegexOptions.IgnoreCase))
+                url = "http://" + url;
+            Uri resultUri;
+            if (!ValidHttpURL(url, out resultUri))
+            {
+                MessageBox.Show("Enter valid url");
+                return;
+            }
+            string[] urlElements = url.Split('/');
+            using (WebClient wc = new WebClient())
+            {
+                wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                wc.DownloadFileAsync(
+               // Param1 = Link of file
+               resultUri,
+               // Param2 = Path to save
+              
+               currentPath + urlElements[urlElements.Length - 1]
+                );
+            }
+            label1.Text = "Done";
+            toolStripTextBox1.Text = " ";
+            clsTreeListView.FocusItem(listView, currentPath, urlElements[urlElements.Length - 1]);
+        }
+
+        void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            Update_Status(e.ProgressPercentage); 
+        }
+        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+        public bool ValidHttpURL(string s, out Uri resultURI)
+        {
+
+
+            return Uri.TryCreate(s, uriKind: UriKind.Absolute, result: out resultURI)
+                ? resultURI.Scheme == Uri.UriSchemeHttp ||
+                        resultURI.Scheme == Uri.UriSchemeHttps
+                : false;
+        }
+
+        
     }
 }
