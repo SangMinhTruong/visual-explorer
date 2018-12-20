@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
-
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 namespace VisualExplorer
 {
     
@@ -27,7 +29,8 @@ namespace VisualExplorer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Uri resultUri =  new Uri("https://github.com/SangMinhTruong/visual-explorer/blob/master/Setup/_version_.txt");
+            Uri resultUri =  new Uri("https://raw.githubusercontent.com/SangMinhTruong/visual-explorer/master/Setup/_version_.txt");
+            Uri setupUri = new Uri("https://github.com/SangMinhTruong/visual-explorer/raw/master/Setup/veSetup.msi");
             using (WebClient wc = new WebClient())
             {
               
@@ -40,6 +43,31 @@ namespace VisualExplorer
                "update.txt"
                 );
             }
+            string updateVersion = File.ReadAllText("update.txt");
+            if(updateVersion.Trim() == currentVersion.Trim())
+            {
+                MessageBox.Show("You are already using the latest version !");
+                return;
+            }
+            FileInfo setupFile = new FileInfo("veSetup.msi");
+            if (setupFile.Exists)
+                setupFile.Delete();
+            using (WebClient wc = new WebClient())
+            {
+
+                wc.DownloadFileAsync(
+                    setupUri
+               // Param1 = Link of file
+               ,
+               // Param2 = Path to save
+
+               "veSetup.msi"
+                );
+            }
+
+            Process.Start(setupFile.ToString());
+            Application.Exit();
+
         }
     }
 }
