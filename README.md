@@ -19,3 +19,8 @@ You can use the program by clicking on the tree view on the left or the list vie
 ## Download
 You can get the program or the source code for free from the [Releases Page](https://github.com/SangMinhTruong/visual-explorer/releases), or the following url:
 [https://github.com/SangMinhTruong/visual-explorer/releases](https://github.com/SangMinhTruong/visual-explorer/releases)
+## Author
+The program was originally made by "Try Hard" team, including:
+* Trương Minh Sang
+* Hồ Nguyên Bảo
+* Nguyễn Thành Danh
