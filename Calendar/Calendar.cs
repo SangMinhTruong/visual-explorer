@@ -205,7 +205,21 @@ namespace Calendar
                             "Activity information");
         }
 
-        
+        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                button4.Enabled = true;
+                button3.Enabled = true;
+                button2.Enabled = true;
+            }
+            else
+            {
+                button4.Enabled = false;
+                button3.Enabled = false;
+                button2.Enabled = false;
+            }
+        }
     }
     public class GoButtonEventArgs : EventArgs
     {

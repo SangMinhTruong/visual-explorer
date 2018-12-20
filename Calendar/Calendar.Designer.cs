@@ -74,6 +74,7 @@
             // 
             // button4
             // 
+            this.button4.Enabled = false;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button4.Location = new System.Drawing.Point(216, 279);
             this.button4.Name = "button4";
@@ -95,6 +96,7 @@
             // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(142, 279);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(55, 23);
@@ -105,6 +107,7 @@
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(81, 279);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(55, 23);
@@ -130,6 +133,7 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
             this.listView1.ItemActivate += new System.EventHandler(this.listView1_ItemActivate);
+            this.listView1.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView1_ItemSelectionChanged);
             // 
             // Details
             // 

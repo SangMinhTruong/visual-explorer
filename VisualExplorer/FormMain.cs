@@ -717,6 +717,7 @@ namespace VisualExplorer
             scheduler.Show();
             scheduler.GoButtonClicked += new Calendar.Calendar.GoButtonClickHandler(GoToDirectory);
         }
+        // ------------------------------------
 
         private void listView_MouseClick(object sender, EventArgs e)
         {

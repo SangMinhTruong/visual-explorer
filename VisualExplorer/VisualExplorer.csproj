@@ -106,7 +106,6 @@
     <None Include="Resources\download.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="visual_explorer - app.ico" />
     <Content Include="visual_explorer.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
