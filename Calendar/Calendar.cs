@@ -132,6 +132,10 @@ namespace Calendar
                     listView1.Items.Add(lvi);
                 }
             }
+
+            listView1_ItemSelectionChanged(listView1, 
+                                           new ListViewItemSelectionChangedEventArgs(
+                                               new ListViewItem(), 0, false));
         }
 
         private void button3_Click(object sender, EventArgs e)
