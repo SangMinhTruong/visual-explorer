@@ -20,6 +20,7 @@ namespace VisualExplorer
         public aboutForm()
         {
             InitializeComponent();
+            aboutLabel.Text = "Visual Explorer ver " + currentVersion;
         }
 
         private void aboutLabel_Click(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace VisualExplorer
             using (WebClient wc = new WebClient())
             {
               
-                wc.DownloadFileAsync(
+                wc.DownloadFile(
                     resultUri
                // Param1 = Link of file
                ,
@@ -42,7 +43,9 @@ namespace VisualExplorer
 
                "update.txt"
                 );
+                    
             }
+            
             string updateVersion = File.ReadAllText("update.txt");
             if(updateVersion.Trim() == currentVersion.Trim())
             {
@@ -55,7 +58,7 @@ namespace VisualExplorer
             using (WebClient wc = new WebClient())
             {
 
-                wc.DownloadFileAsync(
+                wc.DownloadFile(
                     setupUri
                // Param1 = Link of file
                ,
