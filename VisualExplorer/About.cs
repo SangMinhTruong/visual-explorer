@@ -16,7 +16,7 @@ namespace VisualExplorer
     
     public partial class aboutForm : Form
     {
-        string currentVersion = "1.0.0";
+        string currentVersion = "1.0.1";
         public aboutForm()
         {
             InitializeComponent();
