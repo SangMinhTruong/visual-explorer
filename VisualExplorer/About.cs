@@ -16,6 +16,7 @@ namespace VisualExplorer
     
     public partial class aboutForm : Form
     {
+        
         string currentVersion = "1.0.1";
         public aboutForm()
         {
@@ -30,47 +31,51 @@ namespace VisualExplorer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Uri resultUri =  new Uri("https://raw.githubusercontent.com/SangMinhTruong/visual-explorer/master/Setup/_version_.txt");
-            Uri setupUri = new Uri("https://github.com/SangMinhTruong/visual-explorer/raw/master/Setup/veSetup.msi");
-            using (WebClient wc = new WebClient())
+            try
             {
-              
-                wc.DownloadFile(
-                    resultUri
-               // Param1 = Link of file
-               ,
-               // Param2 = Path to save
+                Uri resultUri = new Uri("https://raw.githubusercontent.com/SangMinhTruong/visual-explorer/master/Setup/_version_.txt");
+                Uri setupUri = new Uri("https://github.com/SangMinhTruong/visual-explorer/raw/master/Setup/veSetup.msi");
+                using (WebClient wc = new WebClient())
+                {
 
-               "update.txt"
-                );
-                    
+                    wc.DownloadFile(
+                        resultUri
+                   // Param1 = Link of file
+                   ,
+                   // Param2 = Path to save
+
+                   "update.txt"
+                    );
+                }
+                string updateVersion = File.ReadAllText("update.txt");
+                if (updateVersion.Trim() == currentVersion.Trim())
+                {
+                    MessageBox.Show("You are already using the latest version !");
+                    return;
+                }
+                FileInfo setupFile = new FileInfo("veSetup.msi");
+                if (setupFile.Exists)
+                    setupFile.Delete();
+                using (WebClient wc = new WebClient())
+                {
+
+                    wc.DownloadFile(
+                        setupUri
+                   // Param1 = Link of file
+                   ,
+                   // Param2 = Path to save
+
+                   "veSetup.msi"
+                    );
+                }
+
+                Process.Start(setupFile.ToString());
+                Application.Exit();
             }
-            
-            string updateVersion = File.ReadAllText("update.txt");
-            if(updateVersion.Trim() == currentVersion.Trim())
+            catch (Exception err)
             {
-                MessageBox.Show("You are already using the latest version !");
-                return;
+                MessageBox.Show(err.ToString());
             }
-            FileInfo setupFile = new FileInfo("veSetup.msi");
-            if (setupFile.Exists)
-                setupFile.Delete();
-            using (WebClient wc = new WebClient())
-            {
-
-                wc.DownloadFile(
-                    setupUri
-               // Param1 = Link of file
-               ,
-               // Param2 = Path to save
-
-               "veSetup.msi"
-                );
-            }
-
-            Process.Start(setupFile.ToString());
-            Application.Exit();
-
         }
     }
 }
