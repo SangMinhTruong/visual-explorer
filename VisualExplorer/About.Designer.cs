@@ -43,7 +43,7 @@
             this.aboutLabel.Name = "aboutLabel";
             this.aboutLabel.Size = new System.Drawing.Size(466, 55);
             this.aboutLabel.TabIndex = 0;
-            this.aboutLabel.Text = "Visual Explorer 1.0.0";
+            this.aboutLabel.Text = "Visual Explorer 1.0.1";
             this.aboutLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.aboutLabel.Click += new System.EventHandler(this.aboutLabel_Click);
             // 
